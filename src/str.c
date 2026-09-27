@@ -51,3 +51,27 @@ void str_lower(str_t s) {
 		++p;
 	}
 }
+
+int str_2int(str_t s) {
+	int reslut = 0;
+	int i = 0;
+	int num_signed = 0;
+	char* num = s->str;
+	
+	if ( num[i] == '-' ) {
+		num_signed = 1;
+		++i;
+	}else if ( num[i] == '+' ) ++i;
+
+	for ( ; i < s->len ; ++i ) {
+		if ( num[i] >= '0' && num[i] <= '9' ) {
+			reslut = reslut * 10 + ( num[i] - '0' );
+		}
+	}
+
+	if ( num_signed == 1 ) {
+		reslut = -(reslut);
+	}
+	return reslut;
+}
+

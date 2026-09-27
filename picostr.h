@@ -29,5 +29,6 @@ str_t view_new(raw_t buf,char* cstr,len_t len);
 int str_cmpz(str_t dst,str_t src,len_t len);
 void str_upper(str_t s);
 void str_lower(str_t s);
+int str_2int(str_t s);
 
 #endif
