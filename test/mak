@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CC=clang
+CC=gcc
 SRC=../src/*
 
 $CC $SRC $@ -I..

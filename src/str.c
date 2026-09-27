@@ -27,3 +27,27 @@ int str_cmpz(str_t dst,str_t src,int len) {
 
 	return 1;
 }
+
+void str_upper(str_t s) {
+	char* p = s->str;
+
+	while ( *p != '\0' ) {
+		if ( *p >= 'a' && *p <= 'z' ) {
+			if ( *p == ' ' ) ++p;
+			*p -= 32;
+		}
+		++p;
+	}
+}
+
+void str_lower(str_t s) {
+	char* p = s->str;
+
+	while ( *p != '\0' ) {
+		if ( *p >= 'A' && *p <= 'Z' ) {
+			if ( *p == ' ' ) ++p;
+			*p += 32;
+		}
+		++p;
+	}
+}
