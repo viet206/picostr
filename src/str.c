@@ -1,6 +1,6 @@
 #include "picostr.h"
 
-str_t str_new(raw_t buf,char* cstr,int len) {
+str_t str_new(raw_t buf,char* cstr,len_t len) {
 	str_t restrict s = (str_t) buf;
 	s->len = len;
 	s->str = (char*) s + STR_SIZE;
@@ -8,14 +8,14 @@ str_t str_new(raw_t buf,char* cstr,int len) {
 	return s;
 }
 
-str_t view_new(raw_t buf,char* cstr,int len) {
+str_t view_new(raw_t buf,char* cstr,len_t len) {
 	str_t restrict s = (str_t) buf;
 	s->len = len;
 	s->str = cstr;
 	return s;
 }
 
-int str_cmpz(str_t dst,str_t src,int len) {
+int str_cmpz(str_t dst,str_t src,len_t len) {
 	char* restrict pdst = dst->str;
 	char* restrict psrc = src->str;
 

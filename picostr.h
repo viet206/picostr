@@ -1,6 +1,8 @@
 #ifndef ___Pico_String___
 #define ___Pico_String___
 
+#include "config.h"
+
 #define PICOSTR_VER "0.0.1"
 
 #define fn_copy buf_copy
@@ -11,26 +13,21 @@
 
 typedef struct {
 	char* str;
-	int len;
+	len_t len;
 	int pad;
 }pico_str_t;
 
 typedef pico_str_t* str_t;
-typedef char* raw_t;
-typedef unsigned long long usize;
-typedef unsigned short uint2;
 
 #define str_lit(s,len) &(pico_str_t){s,len}
 
-void buf_copy(raw_t dst,raw_t src,int size);
-void buf_zero(raw_t buf,int size);
+void buf_copy(raw_t dst,raw_t src,len_t size);
+void buf_zero(raw_t buf,len_t size);
 
-str_t str_new(raw_t buf,char* cstr,int len);
-str_t view_new(raw_t buf,char* cstr,int len);
-int str_cmpz(str_t dst,str_t src,int len);
+str_t str_new(raw_t buf,char* cstr,len_t len);
+str_t view_new(raw_t buf,char* cstr,len_t len);
+int str_cmpz(str_t dst,str_t src,len_t len);
 void str_upper(str_t s);
 void str_lower(str_t s);
-
-#define str_open(obj) (obj)->str
 
 #endif

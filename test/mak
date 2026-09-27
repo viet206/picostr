@@ -1,6 +1,21 @@
 #!/bin/bash
 
+FILE="$1"
+
 CC=gcc
 SRC=../src/*
 
-$CC $SRC $@ -I..
+if [ -z $FILE ]; then
+cat <<EOF
+	Build script
+	Usage: $0 file
+EOF
+return 1
+fi
+
+if [ ! -f $FILE ]; then
+	echo "file $FILE not found"
+	return 1
+fi
+
+$CC $SRC -I.. $FILE
