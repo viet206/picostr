@@ -1,21 +1,46 @@
 #!/bin/bash
 
-FILE="$1"
+TARGET="$1"
+FILE="$2"
 
 CC=gcc
 SRC=../src/*
+LD=ld
 
-if [ -z $FILE ]; then
+if [ -z $TARGET ]; then
 cat <<EOF
-	Build script
-	Usage: $0 file
+
+	picostr build script
+	Usage: $0 Target ...
+
+	Target:
+	 obj : objfile
+	 so  : shared lib
+	 b [ file ] : build static
+
+	Example :
+	 $0 obj
+	 $0 so
+	 $0 b test.c
+
 EOF
 return 1
 fi
 
-if [ ! -f $FILE ]; then
-	echo "file $FILE not found"
-	return 1
-fi
-
-$CC $SRC -I.. $FILE
+case $TARGET in
+	obj)
+		$CC $SRC -c -I..
+		$LD -r *.o -o pstr.o
+		rm *f.o str.o
+		;;
+	so)
+		$CC $SRC -shared -I.. -fPIC -o libpstr.so
+		;;
+	b)
+		$CC $SRC -I.. $FILE
+		;;
+	*)
+		echo "target $TARGET not valid"
+		return 1
+		;;
+esac
