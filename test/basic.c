@@ -4,6 +4,7 @@
 
 int main() {
 	char buf[64] = {0};
+	static char buf3[64] = {0};
 
 	str_t str1 = str_new(buf,"Hello Pico String",18);
 
@@ -17,5 +18,11 @@ int main() {
 
 	int d = str_2int(str_lit("-A3C5B6",7));
 
+	str_t s3 = str_sub(buf3,str2,2,7);
+
+	printf(s3->str);
+
 	printf("%d",d);
+
+	free(buf2);
 }

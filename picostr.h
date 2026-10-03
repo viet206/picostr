@@ -18,6 +18,7 @@ typedef struct {
 }pico_str_t;
 
 typedef pico_str_t* str_t;
+typedef str_t* arr_t;
 
 #define str_lit(s,len) &(pico_str_t){s,len}
 
@@ -30,5 +31,6 @@ int str_cmpz(str_t dst,str_t src,len_t len);
 void str_upper(str_t s);
 void str_lower(str_t s);
 int str_2int(str_t s);
+str_t str_sub(raw_t buf,str_t s,int form,int to);
 
 #endif

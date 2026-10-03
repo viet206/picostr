@@ -75,3 +75,13 @@ int str_2int(str_t s) {
 	return reslut;
 }
 
+str_t str_sub(raw_t buf,str_t s,int form,int to) {
+	str_t str = (str_t) buf;
+	str->len = to - form;
+	str->str = (char*) buf + STR_SIZE;
+	char* p = str->str;
+
+	fn_copy(p,s->str + form,str->len);
+	p[str->len] = '\0';
+	return str;
+}
